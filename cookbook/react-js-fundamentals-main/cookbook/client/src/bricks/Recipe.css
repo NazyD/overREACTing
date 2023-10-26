@@ -1,4 +1,6 @@
-.recipe-card {
+
+/* Styl pro karty velkého zobrazení */
+.recipe-card{
     border-color: grey;
     border-radius: 8px;
     box-shadow: 0px 10px 8px #999;
@@ -9,6 +11,10 @@
     float: left;
 }
 
+.description-recipe {
+    margin-bottom: 15px;
+}
+
 .recipe-card img {
     width: 100%;
     height: 100%;
@@ -17,6 +23,33 @@
 
 
 
+/* Styl pro karty malého zobrazení */
+.recipe-card-small {
+    border-color: grey;
+    border-radius: 8px;
+    box-shadow: 0px 10px 8px #999;
+    margin: 10px;
+    min-width: 340px;
+    width: 33%;
+    float: left;
+}
+
+.recipe-card-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.description-recipe-small {
+    margin-bottom: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+/* Styl pro zobrazení karet v seznamu */
 .recipe-vertical {
     border-color: grey;
     border-radius: 8px;
@@ -33,19 +66,23 @@
     margin-right: 20px;
     object-fit: cover;
     float: left;
-
 }
+
+.description-recipe-vertical{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    white-space: pre-wrap;
+}
+
+
 
 .text-container {
     flex-grow: 1;
 }
 
-
-.headerRecipe {
+.header-recipe {
     font-size: 20px;
     margin-bottom: 10px;
-}
-
-.descriptionRecipe {
-    margin-bottom: 15px;
 }
