@@ -70,11 +70,11 @@ function RecipeList(props) {
                 </Form>
             </div>
             {viewType === "grid" &&
-                <RecipeCardList recipeList={filteredRecipeList} cardStyle={"grid"}/>}
+                <RecipeCardList recipeList={filteredRecipeList} cardStyle={"grid"} ingredientsList={props.ingredientsList}/>}
             {viewType === "grid-small" &&
-                <RecipeCardList recipeList={filteredRecipeList} cardStyle={"grid-small"}/>}
+                <RecipeCardList recipeList={filteredRecipeList} cardStyle={"grid-small"} ingredientsList={props.ingredientsList}/>}
             {viewType === "vertical" &&
-                <RecipeCardList recipeList={filteredRecipeList} cardStyle={"vertical"}/>}
+                <RecipeCardList recipeList={filteredRecipeList} cardStyle={"vertical"} ingredientsList={props.ingredientsList}/>}
 
         </div>
         )

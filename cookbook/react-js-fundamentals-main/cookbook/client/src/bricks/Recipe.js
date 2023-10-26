@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import './Recipe.css';
 import React from "react";
+import IngredientList from "./IngredientsList";
 
 function Recipe(props) {
     if(props.cardStyle === "grid") {
@@ -14,11 +15,14 @@ function Recipe(props) {
             </Card>
         );
     } else if (props.cardStyle === "grid-small") {
+
         return (
             <Card className="recipe-card-small">
                 <Card.Body>
                     <div className="header-recipe">{props.recipe.name}</div>
                     <div className="description-recipe-small">{props.recipe.description}</div>
+                    <IngredientList ingredientList={props.recipe.ingredients}
+                                    ingredientsList={props.ingredientsList}/>
                     <img src={props.recipe.imgUri} alt={"recipe"}/>
                 </Card.Body>
             </Card>
