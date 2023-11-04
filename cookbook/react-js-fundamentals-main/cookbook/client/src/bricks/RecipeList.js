@@ -24,7 +24,8 @@ function RecipeList(props) {
                 item.description.toLocaleLowerCase().includes(searchBy.toLocaleLowerCase())
             );
         });
-    }, [searchBy]);
+    }, [searchBy, props.recipeList]);
+
 
     function handleSearch(event) {
         event.preventDefault();

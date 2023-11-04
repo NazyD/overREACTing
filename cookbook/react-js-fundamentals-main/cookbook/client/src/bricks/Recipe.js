@@ -10,7 +10,9 @@ function Recipe(props) {
                 <Card.Body>
                     <div className="header-recipe">{props.recipe.name}</div>
                     <div className="description-recipe">{props.recipe.description}</div>
-                    <img src={props.recipe.imgUri} alt={"recipe"}/>
+                    <div className="image">
+                        <img src={props.recipe.imgUri} alt={"recipe"}/>
+                    </div>
                 </Card.Body>
             </Card>
         );
@@ -21,23 +23,28 @@ function Recipe(props) {
                 <Card.Body>
                     <div className="header-recipe">{props.recipe.name}</div>
                     <div className="description-recipe-small">{props.recipe.description}</div>
-                    <IngredientList ingredientList={props.recipe.ingredients}
+                    <div className="ingredients">
+                        <IngredientList ingredientList={props.recipe.ingredients}
                                     ingredientsList={props.ingredientsList}/>
-                    <img src={props.recipe.imgUri} alt={"recipe"}/>
+                    </div>
+                    <div className="image">
+                        <img src={props.recipe.imgUri} alt={"recipe"}/>
+                    </div>
                 </Card.Body>
             </Card>
         );
     } else {
         return (
-            <Card className="recipe-vertical">
-                <Card.Body>
-                    <img src={props.recipe.imgUri} alt={"recipe"}/>
-                    <div className={"text-container"}>
-                        <div className="header-recipe">{props.recipe.name}</div>
-                        <div className="description-recipe-vertical">{props.recipe.description}</div>
-                    </div>
-                </Card.Body>
-            </Card>
+            <table className={"table"}>
+                <tr>
+                    <th>Název receptu</th>
+                    <th>Popis</th>
+                </tr>
+            </table> &&
+            <table className={"table"}>
+                <td>{props.recipe.name}</td>
+                <td>{props.recipe.description}</td>
+            </table>
         );
     }
 

@@ -5,20 +5,25 @@
     border-radius: 8px;
     box-shadow: 0px 10px 8px #999;
     margin: 10px;
-    min-height: 400px;
+    min-height: 450px;
     min-width: 340px;
-    width: 33%;
+    width: 30%;
     float: left;
 }
 
 .description-recipe {
-    margin-bottom: 15px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    white-space: pre-wrap;
 }
 
 .recipe-card img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 5px;
 }
 
 
@@ -29,8 +34,9 @@
     border-radius: 8px;
     box-shadow: 0px 10px 8px #999;
     margin: 10px;
-    min-width: 340px;
-    width: 33%;
+    min-width: 400px;
+    min-height: 400px;
+    width: 30%;
     float: left;
 }
 
@@ -38,6 +44,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 5px;
 }
 
 .description-recipe-small {
@@ -47,33 +54,22 @@
     overflow: hidden;
 }
 
-
-
-/* Styl pro zobrazení karet v seznamu */
-.recipe-vertical {
-    border-color: grey;
-    border-radius: 8px;
-    box-shadow: 0px 10px 8px #999;
-    margin: 10px;
-    max-height: 300px;
-    width: 100%;
-    display: flex;
-}
-
-.recipe-vertical img {
-    width: 50%;
-    height: 50%;
-    margin-right: 20px;
-    object-fit: cover;
-    float: left;
-}
-
-.description-recipe-vertical{
+.ingredients {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 6;
     white-space: pre-wrap;
+}
+
+
+
+/* Styl pro zobrazení karet v seznamu */
+.table {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    min-width: 150px;
 }
 
 
@@ -85,4 +81,12 @@
 .header-recipe {
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+.image {
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0; /* Adjust if needed */
+    right: 0; /* Adjust if needed */
 }
