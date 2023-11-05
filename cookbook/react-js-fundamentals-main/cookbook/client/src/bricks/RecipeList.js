@@ -9,6 +9,7 @@ import RecipeCardList from "./RecipeCardList";
 
 import { mdiMagnify } from "@mdi/js";
 import Icon from "@mdi/react";
+import {Navbar} from "react-bootstrap";
 
 
 function RecipeList(props) {
@@ -38,7 +39,11 @@ function RecipeList(props) {
 
     return (
         <div className={"container"}>
+            <Navbar collapseOnSelect expand="sm" bg="light">
             <div>
+                <Navbar.Brand>Seznam receptů</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse style={{ justifyContent: "right" }}>
                 <Form className="d-flex" onSubmit={handleSearch}>
 
                     <Button
@@ -69,14 +74,15 @@ function RecipeList(props) {
                         <Icon size={1} path={mdiMagnify} />
                     </Button>
                 </Form>
+                </Navbar.Collapse>
             </div>
+            </Navbar>
             {viewType === "grid" &&
                 <RecipeCardList recipeList={filteredRecipeList} cardStyle={"grid"} ingredientsList={props.ingredientsList}/>}
             {viewType === "grid-small" &&
                 <RecipeCardList recipeList={filteredRecipeList} cardStyle={"grid-small"} ingredientsList={props.ingredientsList}/>}
             {viewType === "vertical" &&
                 <RecipeCardList recipeList={filteredRecipeList} cardStyle={"vertical"} ingredientsList={props.ingredientsList}/>}
-
         </div>
         )
 }

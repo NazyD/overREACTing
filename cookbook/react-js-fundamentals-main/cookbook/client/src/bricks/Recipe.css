@@ -1,3 +1,22 @@
+/* Styl pro více zařízení */
+/* telefon = 1 karta */
+@media only screen and (max-width: 426px) {
+    .recipe-card {
+        width: 100% !important;
+    }
+}
+/* tablet = 2 karty */
+@media only screen and (max-width: 769px) and (min-width: 425px) {
+    .recipe-card {
+        width: 45% !important;
+    }
+}
+/* notebook a vetsi = 3 karty */
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+    .recipe-card {
+        width: 30% !important;
+    }
+}
 
 /* Styl pro karty velkého zobrazení */
 .recipe-card{

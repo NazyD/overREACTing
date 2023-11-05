@@ -24,6 +24,7 @@
 .form-style {
    margin: 13px 1px 13px 33px;
    width: 240px !important;
+   float: left;
 }
 
 input.form-style[type="search"]:hover,
