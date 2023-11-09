@@ -1,66 +1,65 @@
 import { useState, useEffect } from "react";
-import bgPicture from './images/cookingMain.jpg';
-import RecipeList from './bricks/RecipeList'
+import { Outlet, useNavigate } from "react-router-dom";
+import canvas from "react-bootstrap/Offcanvas";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Icon from "@mdi/react";
-import {mdiLoading} from "@mdi/js";
+import {mdiAlertOctagonOutline, mdiLoading} from "@mdi/js";
+import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 
 const cockbook = {
   name: "LET ME COOK!"
 }
 
 
-function App() {
 
-    const [recipesLoadCall, setRecipesLoadCall] = useState({
+function App() {
+    const [listRecipeCall, setListRecipeCall] = useState({
         state: "pending",
     });
-    const [ingredientsLoadCall, setIngredientsLoadCall] = useState({
-        state: "pending",
-    });
+    let navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/recipe/list`, {method: "GET",
+        fetch(`http://localhost:3000/recipe/list`, {
+            method: "GET",
         }).then(async (response) => {
             const responseJson = await response.json();
             if (response.status >= 400) {
-                setRecipesLoadCall({ state: "error", error: responseJson });
+                setListRecipeCall({ state: "error", error: responseJson });
             } else {
-                setRecipesLoadCall({ state: "success", data: responseJson });
+                setListRecipeCall({ state: "success", data: responseJson });
             }
         });
-        fetch('http://localhost:3000/ingredient/list', {method: "GET",
-        }).then(async (response) => {
-            const responseJson = await response.json();
-            if (response.status >= 400){
-                setIngredientsLoadCall({state: "error", error: responseJson});
-            } else {
-                setIngredientsLoadCall({state: "success", data: responseJson});
-            }
-        })
     }, []);
 
-    function getChild() {
-        switch (recipesLoadCall.state && ingredientsLoadCall.state) {
+    function getRecipeListDropdown() {
+        switch (listRecipeCall.state) {
             case "pending":
                 return (
-                    <div className={"loading"}>
-                        <Icon size={2} path={mdiLoading} spin={true}/>
-                    </div>
+                    <Nav.Link disabled={true}>
+                        <Icon size={1} path={mdiLoading} spin={true} /> Recipe List
+                    </Nav.Link>
                 );
             case "success":
                 return (
-                    <>
-                        <RecipeList recipeList={recipesLoadCall.data} ingredientsList={ingredientsLoadCall.data} />
-                    </>
+                    <NavDropdown title="Select Recipe" id="navbarScrollingDropdown">
+                        {listRecipeCall.data.map((recipe) => {
+                            return (
+                                <NavDropdown.Item
+                                    onClick={() =>
+                                        navigate("/recipeDetail?id=" + recipe.id)
+                                    }
+                                >
+                                    {recipe.name}
+                                </NavDropdown.Item>
+                            );
+                        })}
+                    </NavDropdown>
                 );
             case "error":
                 return (
-                    <div className={"error"}>
-                        <div>Nepodařilo se načíst data.</div>
-                        <br/>
-                        <pre>{JSON.stringify(recipesLoadCall.error, null, 2)}</pre>
+                    <div>
+                        <Icon size={1} path={mdiAlertOctagonOutline} /> Error
                     </div>
                 );
             default:
@@ -69,19 +68,40 @@ function App() {
     }
 
     return (
-        <div>
-            <div style={{backgroundImage: `url(${bgPicture})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                height: "270px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"}}>
-                <div className="App" style={{color: "white", fontSize: "50px"}}>
-                    <h1>{cockbook.name}</h1>
-                </div>
-            </div>
-            {getChild()}
+        <div className="App">
+            <Navbar
+                fixed="top"
+                expand={"sm"}
+                className="mb-3"
+                bg="dark"
+                variant="dark"
+            >
+                <Container fluid>
+                    <Navbar.Brand onClick={() => navigate("/")}>
+                        nav
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
+                    <Navbar.Offcanvas id={`offcanvasNavbar-expand-sm`}>
+                        <canvas.Header closeButton>
+                            <canvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
+                                nav
+                            </canvas.Title>
+                        </canvas.Header>
+                        <canvas.Body>
+                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                                {getRecipeListDropdown()}
+                                <Nav.Link onClick={() => navigate("/recipeList")}>
+                                    Recepty
+                                </Nav.Link>
+                                <Nav.Link onClick={() => navigate("/ingredientList")}>
+                                    Ingredience
+                                </Nav.Link>
+                            </Nav>
+                        </canvas.Body>
+                    </Navbar.Offcanvas>
+                </Container>
+            </Navbar>
+            <Outlet />
         </div>
     );
 }
