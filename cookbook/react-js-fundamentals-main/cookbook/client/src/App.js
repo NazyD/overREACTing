@@ -6,14 +6,16 @@ import './App.css';
 import Icon from "@mdi/react";
 import {mdiAlertOctagonOutline, mdiLoading} from "@mdi/js";
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-
-const cockbook = {
-  name: "LET ME COOK!"
-}
-
+import Button from "react-bootstrap/Button";
+import NewRecipe from "./bricks/NewRecipe"
 
 
 function App() {
+
+    const [showModal, setShowModal] = useState({
+        state: false,
+        selectedRecipe: null
+    });
     const [listRecipeCall, setListRecipeCall] = useState({
         state: "pending",
     });
@@ -67,6 +69,13 @@ function App() {
         }
     }
 
+    const handleEditRecipe = (recipe) => {
+        setShowModal({
+            state: true,
+            selectedRecipe: recipe, // Set the selected recipe for editing
+        });
+    };
+
     return (
         <div className="App">
             <Navbar
@@ -96,11 +105,25 @@ function App() {
                                 <Nav.Link onClick={() => navigate("/ingredientList")}>
                                     Ingredience
                                 </Nav.Link>
+                                <Button onClick={() => setShowModal({state: true})} variant="success"
+                                        style={{marginInline: 7}}>Nový recept</Button>
                             </Nav>
                         </canvas.Body>
                     </Navbar.Offcanvas>
                 </Container>
             </Navbar>
+            <NewRecipe
+                showModal={showModal.state}
+                setShowModal={setShowModal}
+                selectedRecipe={showModal.selectedRecipe} // Pass selected recipe to NewRecipe
+                onSave={(data) => {
+                    console.log("Recipe saved:", data);
+                    setShowModal({
+                        state: false,
+                        selectedRecipe: null, // Reset selected recipe after save
+                    });
+                }}
+            />
             <Outlet />
         </div>
     );

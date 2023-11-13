@@ -68,59 +68,10 @@
     "imgUri": "https://zachranjidlo.cz/wp-content/uploads/dsc-0516-1-1024x480-1200x500-c-default.jpg",
     "ingredients": [
       {
-        "id": "f9996cfda5568262",
-        "amount": 2,
-        "unit": "hrnky"
-      },
-      {
-        "id": "518aea069b179f29",
-        "amount": 2,
-        "unit": "ks"
-      },
-      {
+        "name": "mrkev",
         "id": "01ed1245cdfd005a",
         "amount": 2,
-        "unit": "ks"
-      },
-      {
-        "id": "157003980c0a437a",
-        "amount": 4,
-        "unit": "lžíce"
-      },
-      {
-        "id": "2220a6eb35e31dc6",
-        "amount": 2,
-        "unit": "ks"
-      },
-      {
-        "id": "0b9ccac3b2f733cc",
-        "amount": 1,
-        "unit": "lžička"
-      },
-      {
-        "id": "dfa4b721efe898a5",
-        "amount": 1,
-        "unit": "lžička"
-      },
-      {
-        "id": "97f5d8e88343e612",
-        "amount": 1,
-        "unit": "lžička"
-      },
-      {
-        "id": "3f702872fb8e99f8",
-        "amount": 1,
-        "unit": "lžička"
-      },
-      {
-        "id": "cd99517791018390",
-        "amount": 0.25,
-        "unit": "lžičky"
-      },
-      {
-        "id": "40d227ce8a379758",
-        "amount": 100,
-        "unit": "ml"
+        "unit": "d"
       }
     ],
     "id": "854f2f3cb8954916"
@@ -528,5 +479,45 @@
       }
     ],
     "id": "e6a2450d6d6cd747"
+  },
+  {
+    "name": "receptnum3",
+    "description": "postup atd zalamovani radku ve formulari text area ktery je na pet radku a pote se uvnitr vytvori slide bar pro vetsi text a aby neresizoval textarea",
+    "imgUri": "",
+    "ingredients": [
+      {
+        "name": "mrkev",
+        "id": "01ed1245cdfd005a",
+        "amount": 2,
+        "unit": "ks"
+      },
+      {
+        "name": "salátová okurka",
+        "id": "73fd3db102b7803d",
+        "amount": 1,
+        "unit": "ks"
+      },
+      {
+        "name": "med",
+        "id": "defe5185b23ca985",
+        "amount": 7,
+        "unit": "lžíce"
+      }
+    ],
+    "id": "3a3b612a9a926d70"
+  },
+  {
+    "name": "zkouska",
+    "description": "atdatdatd",
+    "imgUri": "",
+    "ingredients": [
+      {
+        "name": "mrkev",
+        "id": "01ed1245cdfd005a",
+        "amount": 2,
+        "unit": "ks"
+      }
+    ],
+    "id": "a011854c8a029760"
   }
 ]
